@@ -15,6 +15,9 @@ import MatrixTranspose from './src/MatrixTranspose';
 import AdjointMatrix from './src/AdjointMatrix';
 import MatrixAdditionA from './src/MatrixAdditionA';
 import MatrixAdditionB from './src/MatrixAdditionB';
+import MatrixMultiplicationA from './src/MatrixMultiplicationA';
+import MatrixMultiplicationB from './src/MatrixMultiplicationB';
+import MatrixMultiplication from './src/MatrixMultiplication';
 
 
 const Stack = createNativeStackNavigator();
@@ -36,6 +39,19 @@ function MatrixAddition ()  {
     );
 }
 
+// function MatrixMultiplication (){
+//     const [colNum, setColNum] = useState(2);
+//     const [rowNum, setRowNum] = useState(2);
+//
+//     return(
+//         <MatrixContext.Provider value={{colNum, setColNum, rowNum, setRowNum}}>
+//             <Stack.Navigator>
+//                 <Stack.Screen name={"MatrixMultiplicationA"} component={MatrixMultiplicationA} options={{headerShown:false}}/>
+//             </Stack.Navigator>
+//         </MatrixContext.Provider>
+//     );
+// }
+
 const App = () => {
     return (
         <NavigationContainer>
@@ -50,7 +66,7 @@ const App = () => {
                 <Stack.Screen name="MatrixTrace" component={MatrixTrace} options={{headerShown:false}}/>
                 <Stack.Screen name="MatrixTranspose" component={MatrixTranspose} options={{headerShown:false}}/>
                 <Stack.Screen name="AdjointMatrix" component={AdjointMatrix} options={{headerShown:false}}/>
-
+                <Stack.Screen name="MatrixMultiplication" component={MatrixMultiplication} />
                 <Stack.Screen name="MatrixAddition"
                               component={MatrixAddition}
                               options={{

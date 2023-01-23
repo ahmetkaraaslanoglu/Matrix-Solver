@@ -53,6 +53,10 @@ const SelectionMethod = ({ navigation }) => {
                         <SelectionButton dataName={"MatrixAddition"}/>
                     </TouchableOpacity>
 
+                    <TouchableOpacity onPress={()=> {navigation.navigate("MatrixMultiplication")}}>
+                        <SelectionButton dataName={"MatrixMultiplication"}/>
+                    </TouchableOpacity>
+
                 </ScrollView>
             </View>
         </View>
