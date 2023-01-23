@@ -1,9 +1,7 @@
-import React, {useEffect, useState} from 'react';
-import {Button, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import React from 'react';
 import GaussJordanMethod from './src/GaussJordanMethod';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import SelectionMethod from './src/SelectionMethod';
 import MultiplyScalar from './src/MultiplyScalar';
 import Determinant from './src/Determinant';
@@ -12,45 +10,12 @@ import MatrixInverse from './src/MatrixInverse';
 import MatrixRank from './src/MatrixRank';
 import MatrixTrace from './src/MatrixTrace';
 import MatrixTranspose from './src/MatrixTranspose';
-import AdjointMatrix from './src/AdjointMatrix';
-import MatrixAdditionA from './src/MatrixAdditionA';
-import MatrixAdditionB from './src/MatrixAdditionB';
-import MatrixMultiplicationA from './src/MatrixMultiplicationA';
-import MatrixMultiplicationB from './src/MatrixMultiplicationB';
 import MatrixMultiplication from './src/MatrixMultiplication';
-
+import AdjoinMatrix from './src/AdjoinMatrix';
+import MatrixSubtraction from './src/MatrixSubtraction';
+import MatrixAddition from './src/MatrixAddition';
 
 const Stack = createNativeStackNavigator();
-const Tab = createMaterialTopTabNavigator();
-export const MatrixContext = React.createContext();
-
-
-function MatrixAddition ()  {
-    const [colNum, setColNum] = useState(2);
-    const [rowNum, setRowNum] = useState(2);
-
-    return (
-        <MatrixContext.Provider value={{colNum, setColNum, rowNum, setRowNum}}>
-            <Tab.Navigator>
-                <Tab.Screen name={"MatrixAdditionA"} component={MatrixAdditionA}  />
-                <Tab.Screen name={"MatrixAdditionB"} component={MatrixAdditionB} />
-            </Tab.Navigator>
-        </MatrixContext.Provider>
-    );
-}
-
-// function MatrixMultiplication (){
-//     const [colNum, setColNum] = useState(2);
-//     const [rowNum, setRowNum] = useState(2);
-//
-//     return(
-//         <MatrixContext.Provider value={{colNum, setColNum, rowNum, setRowNum}}>
-//             <Stack.Navigator>
-//                 <Stack.Screen name={"MatrixMultiplicationA"} component={MatrixMultiplicationA} options={{headerShown:false}}/>
-//             </Stack.Navigator>
-//         </MatrixContext.Provider>
-//     );
-// }
 
 const App = () => {
     return (
@@ -65,20 +30,10 @@ const App = () => {
                 <Stack.Screen name="MatrixRank" component={MatrixRank} options={{headerShown:false}}/>
                 <Stack.Screen name="MatrixTrace" component={MatrixTrace} options={{headerShown:false}}/>
                 <Stack.Screen name="MatrixTranspose" component={MatrixTranspose} options={{headerShown:false}}/>
-                <Stack.Screen name="AdjointMatrix" component={AdjointMatrix} options={{headerShown:false}}/>
+                <Stack.Screen name="AdjoinMatrix" component={AdjoinMatrix} options={{headerShown:false}}/>
                 <Stack.Screen name="MatrixMultiplication" component={MatrixMultiplication} />
-                <Stack.Screen name="MatrixAddition"
-                              component={MatrixAddition}
-                              options={{
-                                headerTitle:'Matrix Addition',
-                                headerTitleAlign:'center',
-                                headerTintColor:'white',
-                                headerStyle:{
-                                    backgroundColor:'black'
-                                }
-                }}
-                />
-
+                <Stack.Screen name="MatrixSubtraction" component={MatrixSubtraction}/>
+                <Stack.Screen name="MatrixAddition" component={MatrixAddition} />
             </Stack.Navigator>
         </NavigationContainer>
     );

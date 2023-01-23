@@ -45,8 +45,8 @@ const SelectionMethod = ({ navigation }) => {
                         <SelectionButton dataName={"MatrixTranspose"}/>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={()=> [navigation.navigate("AdjointMatrix")]}>
-                        <SelectionButton dataName={"AdjointMatrix"}/>
+                    <TouchableOpacity onPress={()=> [navigation.navigate("AdjoinMatrix")]}>
+                        <SelectionButton dataName={"AdjoinMatrix"}/>
                     </TouchableOpacity>
 
                     <TouchableOpacity onPress={()=> [navigation.navigate("MatrixAddition")]}>
@@ -56,6 +56,12 @@ const SelectionMethod = ({ navigation }) => {
                     <TouchableOpacity onPress={()=> {navigation.navigate("MatrixMultiplication")}}>
                         <SelectionButton dataName={"MatrixMultiplication"}/>
                     </TouchableOpacity>
+
+                    <TouchableOpacity onPress={()=> {navigation.navigate("MatrixSubtraction")}}>
+                        <SelectionButton dataName={"MatrixSubtraction"}/>
+                    </TouchableOpacity>
+
+
 
                 </ScrollView>
             </View>

@@ -1,7 +1,7 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Alert, Text, TextInput, TouchableOpacity, View} from 'react-native';
 
-const MatrixMultiplication = () => {
+const MatrixSubtraction = () => {
     const [colNumA,setColNumA] = useState(2);
     const [rowNumA,setRowNumA] = useState(2);
     const [colNumB,setColNumB] = useState(2);
@@ -12,21 +12,18 @@ const MatrixMultiplication = () => {
     const [whichMatrix,setWhichMatrix] = useState(true);
     const [solutionMatrix,setSolutionMatrix] = useState([]);
 
-    function matrixMultiplication() {
+    function matrixSub() {
         const solution = [];
         for (let i = 0; i < matrixA.length; i++) {
             const row = [];
-            for (let j = 0; j < matrixB[i].length; j++) {
-                let sum = 0;
-                for (let k = 0; k < matrixA[i].length; k++) {
-                    sum += Number(matrixA[i][k]) * Number(matrixB[k][j]);
-                }
-                row.push(sum);
+            for (let j = 0; j < matrixA[i].length; j++) {
+                row.push(Number(matrixA[i][j]) - Number(matrixB[i][j]));
             }
             solution.push(row);
         }
         return solution;
     }
+
 
     function createMatrixA(numColumns, numRows, oldMatrix) {
         const matrix = [];
@@ -158,7 +155,7 @@ const MatrixMultiplication = () => {
                                                                newMatrixA[index][innerIndex] = val;
                                                                setMatrixA([...newMatrixA]);
                                                            }}
-                                                           // value={`${innerItem}`}
+                                                    // value={`${innerItem}`}
                                                            value={innerItem}
                                                 />
                                             );
@@ -187,7 +184,7 @@ const MatrixMultiplication = () => {
                                                                newMatrixB[index][innerIndex] = val;
                                                                setMatrixB([...newMatrixB]);
                                                            }}
-                                                           // value={`${innerItem}`}
+                                                    // value={`${innerItem}`}
                                                            value={innerItem}
 
 
@@ -221,7 +218,7 @@ const MatrixMultiplication = () => {
                 ):(
                     <TouchableOpacity style={{height:50,width:300,backgroundColor:'black',justifyContent:'center',alignItems:'center',borderRadius:40}}
                                       onPress={() => {
-                                          setSolutionMatrix(matrixMultiplication());
+                                          setSolutionMatrix(matrixSub());
                                           setTimeout(() => {
                                               setWhichMatrix(true);
                                           },100);
@@ -285,4 +282,4 @@ const MatrixMultiplication = () => {
         </View>
     );
 }
-export default MatrixMultiplication;
+export default MatrixSubtraction;
