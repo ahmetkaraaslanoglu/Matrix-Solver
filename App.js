@@ -1,41 +1,47 @@
 import React from 'react';
-import GaussJordanMethod from './src/GaussJordanMethod';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SelectionMethod from './src/SelectionMethod';
-import MultiplyScalar from './src/MultiplyScalar';
-import Determinant from './src/Determinant';
-import MatrixPower from './src/MatrixPower';
-import MatrixInverse from './src/MatrixInverse';
-import MatrixRank from './src/MatrixRank';
-import MatrixTrace from './src/MatrixTrace';
-import MatrixTranspose from './src/MatrixTranspose';
-import MatrixMultiplication from './src/MatrixMultiplication';
-import AdjoinMatrix from './src/AdjoinMatrix';
-import MatrixSubtraction from './src/MatrixSubtraction';
-import MatrixAddition from './src/MatrixAddition';
-
+import JustMatrix from './src/functions/JustMatrix';
+import MatrixAndSolution from './src/functions/MatrixAndSolution';
+import MatrixAndSquare from './src/functions/MatrixAndSquare';
+import DoubleMatrix from './src/functions/DoubleMatrix';
 const Stack = createNativeStackNavigator();
-
 const App = () => {
+
     return (
         <NavigationContainer>
             <Stack.Navigator>
-                <Stack.Screen name="HomeScreen" component={SelectionMethod} options={{headerShown:false}}/>
-                <Stack.Screen name="GaussJordan" component={GaussJordanMethod} options={{headerShown:false}}/>
-                <Stack.Screen name="MultiplyScalar" component={MultiplyScalar} options={{headerShown:false}}/>
-                <Stack.Screen name="Determinant" component={Determinant} options={{headerShown:false}}/>
-                <Stack.Screen name="MatrixPower" component={MatrixPower} options={{headerShown:false}}/>
-                <Stack.Screen name="MatrixInverse" component={MatrixInverse} options={{headerShown:false}}/>
-                <Stack.Screen name="MatrixRank" component={MatrixRank} options={{headerShown:false}}/>
-                <Stack.Screen name="MatrixTrace" component={MatrixTrace} options={{headerShown:false}}/>
-                <Stack.Screen name="MatrixTranspose" component={MatrixTranspose} options={{headerShown:false}}/>
-                <Stack.Screen name="AdjoinMatrix" component={AdjoinMatrix} options={{headerShown:false}}/>
-                <Stack.Screen name="MatrixMultiplication" component={MatrixMultiplication} />
-                <Stack.Screen name="MatrixSubtraction" component={MatrixSubtraction}/>
-                <Stack.Screen name="MatrixAddition" component={MatrixAddition} />
+                <Stack.Screen name="HomeScreen"
+                              component={SelectionMethod}
+                              options={{
+                                  headerTitleAlign:'center',
+                                  title:'Matrix Solver',
+                                  headerTitleStyle:{
+                                      color:'white',
+                                      fontSize:25,
+                                      fontWeight:'bold',
+                                  },
+                                  headerStyle:{
+                                      backgroundColor:'black',
+                                  },
+                              }}
+                />
+                <Stack.Screen name="MatrixTranspose" component={JustMatrix}/>
+                <Stack.Screen name="Determinant" component={JustMatrix}/>
+                <Stack.Screen name="MatrixInverse" component={JustMatrix}/>
+                <Stack.Screen name="MatrixRank" component={JustMatrix}/>
+                <Stack.Screen name="MatrixTrace" component={JustMatrix}/>
+                <Stack.Screen name="AdjoinMatrix" component={JustMatrix}/>
+                <Stack.Screen name="MultiplyScalar" component={MatrixAndSquare}/>
+                <Stack.Screen name="MatrixPower" component={MatrixAndSquare}/>
+                <Stack.Screen name="GaussJordan" component={MatrixAndSolution}/>
+                <Stack.Screen name="MatrixMultiplication" component={DoubleMatrix}/>
+                <Stack.Screen name="MatrixSubtraction" component={DoubleMatrix}/>
+                <Stack.Screen name="MatrixAddition" component={DoubleMatrix}/>
             </Stack.Navigator>
         </NavigationContainer>
+
     );
 }
 export default App;

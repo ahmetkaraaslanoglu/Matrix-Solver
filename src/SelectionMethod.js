@@ -1,70 +1,38 @@
 import React from 'react';
-import {ScrollView, StatusBar, Text, TouchableOpacity, View} from 'react-native';
-import SelectionButton from './helpers/SelectionButton';
+import {StatusBar, View} from 'react-native';
+import SelectionButton from './components/SelectionButton';
 
 const SelectionMethod = ({ navigation }) => {
 
-    return(
-        <View style={{flex:1}}>
-            <StatusBar backgroundColor={"black"} />
-            <View style={{flex:1,backgroundColor:'black',alignItems:'center',justifyContent:'center'}}>
-                <Text style={{fontSize:24,color:'white'}}>Matrix Calculator</Text>
-            </View>
-            <View style={{flex:12,backgroundColor:'white',justifyContent:'center',alignItems:'center',padding:25}}>
-                <ScrollView>
+    const methodNames = [
+        "GaussJordan",
+        "Determinant",
+        "MultiplyScalar",
+        "MatrixPower",
+        "MatrixInverse",
+        "MatrixRank",
+        "MatrixTrace",
+        "MatrixTranspose",
+        "AdjoinMatrix",
+        "MatrixAddition",
+        "MatrixMultiplication",
+        "MatrixSubtraction",
+    ];
 
-                    <TouchableOpacity onPress={() => {navigation.navigate("GaussJordan");}}>
-                        <SelectionButton dataName={"Gauss Jordan Elimination"}/>
-                    </TouchableOpacity>
+    return (
+        <View style={{backgroundColor:'gray', flex:1,justifyContent:'center',alignItems:'center',marginBottom:10}} >
 
-                    <TouchableOpacity onPress={() => {navigation.navigate("Determinant")}} >
-                        <SelectionButton dataName={"Determinant"}/>
-                    </TouchableOpacity>
+            <StatusBar barStyle="light-content" backgroundColor="black"/>
 
-                    <TouchableOpacity onPress={() => {navigation.navigate("MultiplyScalar");}}>
-                        <SelectionButton dataName={"MultiplyScalar"}/>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={() => {navigation.navigate("MatrixPower")}}>
-                        <SelectionButton dataName={"MatrixPower"}/>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={() => {navigation.navigate("MatrixInverse")}}>
-                        <SelectionButton dataName={"MatrixInverse"}/>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={()=> [navigation.navigate("MatrixRank")]}>
-                        <SelectionButton dataName={"MatrixRank"}/>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={()=> [navigation.navigate("MatrixTrace")]}>
-                        <SelectionButton dataName={"MatrixTrace"}/>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={()=> [navigation.navigate("MatrixTranspose")]}>
-                        <SelectionButton dataName={"MatrixTranspose"}/>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={()=> [navigation.navigate("AdjoinMatrix")]}>
-                        <SelectionButton dataName={"AdjoinMatrix"}/>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={()=> [navigation.navigate("MatrixAddition")]}>
-                        <SelectionButton dataName={"MatrixAddition"}/>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={()=> {navigation.navigate("MatrixMultiplication")}}>
-                        <SelectionButton dataName={"MatrixMultiplication"}/>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={()=> {navigation.navigate("MatrixSubtraction")}}>
-                        <SelectionButton dataName={"MatrixSubtraction"}/>
-                    </TouchableOpacity>
-
-
-
-                </ScrollView>
-            </View>
+            {methodNames.map((name) => {
+                return (
+                    <SelectionButton
+                        key={name}
+                        name={name}
+                        goToSolver={() => {navigation.navigate(name);}}
+                    />
+                );
+            })}
         </View>
     );
 }
